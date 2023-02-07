@@ -14,4 +14,5 @@ public class RegisterDto {
     private String mobile;
     private String email;
     private String password;
+    private Long registrationId;
 }
