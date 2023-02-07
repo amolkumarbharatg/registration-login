@@ -5,6 +5,7 @@ import com.springboot.auth.exception.BlogAPIException;
 import com.springboot.auth.payload.RegisterDto;
 import com.springboot.auth.repository.UserRepository;
 import com.springboot.auth.service.AuthService;
+import com.springboot.auth.utils.AppConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,8 @@ public class AuthServiceImpl implements AuthService {
         user.setMobile(registerDto.getMobile());
         user.setEmail(registerDto.getEmail());
         user.setPassword(registerDto.getPassword());
-
-       userRepository.save(user);
+        user.setUser_registration_Id(AppConstants.get64LeastSignificantBitsForVersion1());
+        userRepository.save(user);
 
         return "User registered successfully!.";
     }
